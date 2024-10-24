@@ -33,16 +33,23 @@ class CabangOlahragaController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'code' => 400,
-                'message' => 'Failed',
+                'message' => 'Validation Failed',
                 'errors' => $validator->errors()
             ]);
         }
 
-        CabangOlahraga::create($request->all());
-
-        return response()->json([
-            'code' => 200,
-            'message' => 'Success'
-        ]);
+        try {
+            CabangOlahraga::create($request->all());
+            return response()->json([
+                'code' => 200,
+                'message' => 'Success'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'code' => 500,
+                'message' => 'Server Error',
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 }
