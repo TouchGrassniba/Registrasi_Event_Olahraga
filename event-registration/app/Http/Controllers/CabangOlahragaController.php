@@ -23,11 +23,11 @@ class CabangOlahragaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_peserta' => 'required|string|max:255',
-            'nama_cabang' => 'required|string|max:255',
-            'tanggal_event' => 'required|date',
-            'nomor_registrasi' => 'required|string|unique:cabang_olahraga|max:10',
-            'kategori' => 'required|string|max:50',
+            'nama_peserta' => 'required',
+            'nama_cabang' => 'required',
+            'tanggal_event' => 'required',
+            'nomor_registrasi' => 'required',
+            'kategori' => 'required',
         ]);
 
         if ($validator->fails()) {
