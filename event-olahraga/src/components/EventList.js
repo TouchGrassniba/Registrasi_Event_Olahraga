@@ -9,7 +9,7 @@ const EventList = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await axios.get('/api/registrasi-event-olahraga');
+                const response = await axios.get('http://127.0.0.1:8000/api/registrasi-event-olahraga');
                 setEvents(response.data.data);
             } catch (error) {
                 setError("There was an error fetching the events!");

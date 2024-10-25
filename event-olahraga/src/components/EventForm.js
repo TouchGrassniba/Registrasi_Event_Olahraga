@@ -23,7 +23,7 @@ const EventForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Check if the event date is before today
+        
         const today = new Date().toISOString().split('T')[0];
         if (formData.event_date < today) {
             showToastMessage("Please choose a date that is today or in the future.", 'danger');
@@ -31,7 +31,7 @@ const EventForm = () => {
         }
 
         try {
-            const response = await axios.post('/api/registrasi-event-olahraga', formData);
+            const response = await axios.post('http://127.0.0.1:8000/api/registrasi-event-olahraga', formData);
             if (response.data.code === 200) {
                 showToastMessage('Registration successful! Your registration number is: ' + response.data.registration_number, 'success');
                 setFormData({
